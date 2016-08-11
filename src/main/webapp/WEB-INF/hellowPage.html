@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hellow wolrd ajax</title>
+
+
+    <script type="text/javascript"  src="/resurce/js/jquery-1.11.3.min.js"></script>
+
+    <script type="text/javascript">
+
+        function jquery() {
+            var name = $('#name').val();
+
+            $.ajax(
+                    {
+                        url: '/hellowAjaxJquaary',
+                        type: 'POST',
+                        contentType : 'application/json',
+                        data: JSON.stringify(
+                                {
+                                    'name': name,
+                                }),
+                        success: function(data) {
+                        alert(data)
+                        },
+                        error: function() {
+                                alert("Error");
+                            }
+                    }
+            );
+        }
+
+        function xhttpJs() {
+            var name=document.getElementById('name').value;
+            var nameJason=JSON.stringify({
+                name: name
+            });
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    var out = xhttp.responseText;
+                    alert(out);
+                }
+            }
+            xhttp.open('POST','/hellowXxhttpJs',true);
+            xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+            xhttp.send(nameJason)
+        }
+
+
+    function xhttp3000() {
+        var name=document.getElementById('name').value;
+        var nameJason=JSON.stringify({
+            name: name
+        });
+
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                var out = xhttp.responseText;
+                alert(out);
+            }
+        }
+        xhttp.open('POST','/hellowXxhttpJs3000',true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+        xhttp.send(nameJason)
+    }
+
+        function jQuary3000() {
+            var name = $('#name').val();
+
+            $.ajax(
+                    {
+                        url: '/hellowAjaxJquaary3000',
+                        type: 'POST',
+                        contentType : 'application/json',
+                        data: JSON.stringify(
+                                {
+                                    'name': name,
+                                }),
+                        success: function(data) {
+                            alert(data)
+                        },
+                        error: function() {
+                            alert("Error");
+                        }
+                    }
+            );
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="name">
+<a href="javascript: jquery()">jQuery</a>
+<a href="javascript: xhttpJs()">xhttp</a>
+<a href="javascript: jQuary3000()">jQuary3000</a>
+<a href="javascript: xhttp3000()">xhttp3000</a>
+
+</body>
+</html>
